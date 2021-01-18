@@ -1,0 +1,169 @@
+
+
+// IUT de Nice / Departement informatique / Module APO Java
+// Annee 2012_2013 - DUT/S2T
+//
+// Classe Fraction - Modelisation des point sur Z*Z
+//
+// Edition "Draft" : le point d'entree simule les tests unitaires
+//
+// + Version 0.0.0
+// + Version 0.1.0 Ajout des méthodes translation et translaté.
+
+// Auteur : S. Nicoletti
+
+package Math.Geometrie.Point.V200;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+//import java.petitpois.*;
+public class Point implements Serializable{
+
+	private char m_nom;
+	private double m_x;
+	private double m_y;
+	private static final double EPISLON = 1./10000;
+
+
+	//										Constructeur par defaut
+
+	public Point ()
+	{
+		this.m_nom = '_';
+		this.m_x=0.0d;
+		this.m_y=0.0d;
+
+	}
+
+	public Point (double x, double y)
+	{// (^_^)
+		this.m_nom = '_';
+		this.m_x=x;
+		this.m_y=y;
+
+	}
+
+	public Point (char nom,double x, double y)
+	{
+		this.m_nom = nom;
+		this.m_x=x;
+		this.m_y=y;
+
+	}
+
+
+	//										Accesseur de consultation
+
+
+	public char getNom ()
+	{
+		return this.m_nom;
+	}
+
+	public double x ()
+	{
+		return this.m_x;
+	}//farce
+
+	public double y ()
+	{
+		return this.m_y;
+	}
+
+	
+	//											Methode clone
+	
+	
+	public Object clone()
+	{
+		return new Point( this.m_nom, this.m_x, this.m_y);  
+	}
+
+	// 								  			Methode equals
+	
+	public boolean equals (Object p1)
+	{
+		Point p2 = (Point) p1;
+		//Vache
+		return (this.m_x == p2.x()) && (this.m_y == p2.y()) ;
+	}
+
+	//											Methode toString
+
+	public String toString ()
+	{
+		return this.m_nom + " (" + this.m_x + ", " + this.m_y + ")";
+	}
+
+	public boolean confondus (Point op2)
+	{
+		return ( (Math.abs(this.x() - op2.x()) <= EPISLON) &&  (Math.abs(this.y() - op2.y()) <= EPISLON) );
+	}
+
+	//											Methode projX
+	public Point projX ()
+	{
+		return new Point (this.x(),0);//huhu
+	}
+	//											Methode projY
+	public Point projY ()
+	{//Ninja
+		return new Point (0,this.y());
+	}
+	//											Methode distance
+	public double distance (final Point op2)
+	{
+		return Math.sqrt( Math.pow(op2.x() - this.x(), 2) + Math.pow(op2.y() - this.y(), 2) );
+	}
+
+	// 											Methode Translation
+
+	public void translation (double dx, double dy)
+	{
+		this.m_x += dx;
+		this.m_y += dy;
+	}
+	
+	public Point translate (double dx, double dy)
+	{
+		return new Point (this.m_x + dx, this.m_y + dy);//Quoi ?
+	}
+	
+	
+	
+	public static Point load (String fileName)throws IOException
+	{
+		Point p = null;
+		ObjectInputStream oi = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fileName)));
+		
+		try {
+			p = (Point) oi.readObject();
+		} catch (Exception e) {e.printStackTrace();}
+		finally{ oi.close();}
+		
+		return p;
+	}//load
+	
+	public static void save (String fileName, Point p) throws IOException 
+	{
+		FileOutputStream fos = new FileOutputStream(fileName);
+		BufferedOutputStream bos = new BufferedOutputStream(fos);
+		ObjectOutputStream oos = new ObjectOutputStream(bos);
+			//pouet
+			try {oos.writeObject(p);}
+			catch (Exception e) {e.printStackTrace();}
+//pourquoi ?
+			finally { oos.close();}
+			
+	}//save
+
+
+
+}
