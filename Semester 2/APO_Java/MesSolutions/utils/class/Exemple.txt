@@ -1,3 +1,0 @@
-Ceci est un texte de test.
-Il contient plusieurs lignes.
-... Une derniere ligne !
