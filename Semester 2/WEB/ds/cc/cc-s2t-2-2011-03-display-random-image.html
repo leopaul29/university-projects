@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<script type="text/javascript" language="javascript">
+		<!--
+		
+		// Voici la partie ˆ faire :
+		
+		// Variables globales 
+		// ------------------
+		
+		// Le nombre d'image total
+		var nb_img = 5;
+		// La variable timer
+		var t;
+		var timer_is_on = 0;
+				
+		// tableau des noms d'images
+		var tab_image = new Array("","./images/img1.jpg","./images/img2.jpg", "./images/img3.jpg","./images/img4.jpg","./images/img5.gif"); 
+
+		// tableau des indicateurs 'image tiree'
+		var mis = new Array(nb_img+1);
+		
+		// Fonctions 
+		// ---------
+		function setRandomTable() {
+		
+			// Initialisation a zero des indicateurs 'image deja tiree'
+			for(i = 1;i <= nb_img;i++)
+				mis[i] = 0;
+			
+			// pour trouver rapidement la derniere image
+			var total = 0;
+			
+			// on va boucler sur nombre d'images moins un
+			for(i = 1; i < nb_img ;i++) {
+				// tirer alŽatoirement un nombre dans mis(i)
+				mis[i]=1+Math.round(Math.random()*(nb_img-1)); 
+				
+				// supposons que l'image ne soit pas encore tiree
+   				trouve=0; 
+   				// voyons si cette image a ete tiree
+   				for (j=1;j<i;j++) {
+   					// si tiree
+     				if (mis[j]==mis[i]) 
+     					trouve=1; 
+     			}
+     			// si deja tiree recommencer a tirer
+   				if (trouve==1)
+   					i=i-1;
+   					
+   				// sinon la compter 
+   				if (trouve==0) 
+   					total=total+mis[i];
+   			}
+
+			// 15=5+4+3+2+1 donc il manque l'image 15-total a affecter
+			mis[nb_img]=15-total;
+		}	
+			
+		// fonction d'affichage de l'animation d'images;
+		var compteur = 10;
+		function displayImg() {
+			
+			// Des que l'on a fait un cycle on refait un tirage et on met le compteur a 1
+			if ( compteur > nb_img) {
+				compteur = 1;
+				setRandomTable();
+			}
+			
+			img = document.getElementById("img1"); 
+			img.src = tab_image[mis[compteur]];
+			
+			//document.write("compteur = " + compteur + "<br/>");
+			//document.write(tab_image[mis[compteur]] + " <br/>");
+			compteur++;
+			
+			t=setTimeout("displayImg()",3000);
+			
+		}
+		
+		function displayRandomImg() {
+			if (!timer_is_on) {
+  				timer_is_on=1;
+  				displayImg();
+  			}
+		}
+		
+		// fonction d'arret de l'animation
+		function stopDisplayRandomImg() {
+			clearTimeout(t);
+			timer_is_on = 0;
+		}
+			
+		//-->
+		</script>
+	</head>
+	<body>
+	
+    	<center>
+	
+		<table width="120" height="120" border="1">
+			<tr>
+				<td valign="middle" align="center">
+					<img id="img1" src="./images/img1.jpg" alt="Images Aleatoire" />
+				</td>			
+			</tr>
+		</table>
+	
+		<form id="f1">
+			<input type="button" name="start" value="Start" onclick="displayRandomImg()" />
+			<input type="button" name="stop" value="Stop" onclick="stopDisplayRandomImg()" />
+		</form>
+	
+		</center>
+	
+
+	</body>
+</html>

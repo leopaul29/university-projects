@@ -1,0 +1,18 @@
+<html>
+<head>
+	<script language="JavaScript">
+		function horloge(); {
+			d=new Date();
+			heure=d.getHours;
+			min=d.getMinutes;
+			sec=d.getSeconds;
+			
+			min=checkTime(m);
+			sec=checkTime(s);
+			document.write("il est " + heure + min + sec );
+		}
+	</script>
+</head>
+<body onload="horloge()">
+</body>
+</html>

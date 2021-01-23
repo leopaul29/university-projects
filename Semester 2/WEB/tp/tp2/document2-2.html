@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+	
+		<Style language="css/text">
+		
+			ul { list-style:none;}
+			
+		</Style>
+		
+		<script language="JavaScript">
+		
+			marques = new Array();
+			marques["default"] = "Choisissez une marque";
+			marques["renault"] = "Renault";
+			marques["peugeot"] = "Peugeot";
+			marques["volkswagen"] = "Volkswagen";
+
+			modeles = new Array();
+			modeles["default"] = [["Choisissez un modèle", 0]];
+			modeles["renault"] = [["Twingo", 9990], ["Clio", 12990], ["Megane", 16990], ["Laguna", 19990]];
+			modeles["peugeot"] = [["107", 10990], ["207", 13990], ["308", 17990], ["407", 20990]];
+			modeles["volkswagen"] = [["Fox", 11450], ["Polo", 14490], ["Golf", 18490], ["Passat", 21990]];
+
+			couleurs = [["Couleur Standard", 0], ["Couleur Métalisée",  500], ["Couleur Nacrée", 750]];
+			
+			boites = [["Boite Manuelle", 0], ["Boite Robotisée",  1000], ["Boite Automatique", 1500]];
+
+			options = [["Radar de recul", 300], ["Phares au xénon", 750], ["Régulateur de vitesse", 300], ["Capteur de pluie et Luminosité", 250], ["Climatisation", 1000]];
+
+			function setMenuMarques(){
+				var menuMarques = document.getElementById('menuMarques');
+				for (marque in marques){
+					var opt = document.createElement('option');
+					opt.value = marque;
+					opt.text = marques[marque];
+					menuMarques.appendChild(opt);
+				}
+			}
+
+			function setMenuModeles(){
+				var marque = document.getElementById('menuMarques').value;
+				var modelesMarque = modeles[marque];
+				var menuModeles = document.getElementById('menuModeles');
+				//On vide le second menu avant de le remplir:
+				while (menuModeles.firstChild) {
+					menuModeles.removeChild(menuModeles.firstChild);
+				}
+				for (i in modelesMarque){
+					var opt = document.createElement('option');
+					opt.text = modelesMarque[i][0];
+					opt.value = modelesMarque[i][1];
+					menuModeles.disabled = (opt.value == 0);
+					menuModeles.appendChild(opt);
+				}
+				setPrixModele();
+			}
+
+			function setPrixModele(){
+				document.getElementById('prixModele').value = document.getElementById('menuModeles').value;
+				setPrixTotal();	
+			}
+
+			function setListeCouleurs(){
+				var listeCouleurs = document.getElementById('listeCouleurs');
+				for (i in couleurs){
+					var li = document.createElement('li');
+					li.innerHTML = '<input type="radio" name="choixCouleur" value="'+couleurs[i][1]+'">'+couleurs[i][0]+'</input>';
+					listeCouleurs.appendChild(li);	
+				}
+			}
+
+			function setPrixCouleur(){
+			 var choixCouleur = document.getElementsByName('choixCouleur');
+			 for (i in choixCouleur) {
+				 if (choixCouleur[i].checked) {
+					 document.getElementById('prixCouleur').value = choixCouleur[i].value;
+					 break;
+				 }
+			 }
+				setPrixTotal();
+			}
+			
+			function setListeBoites(){
+				var listeBoites = document.getElementById('listeBoites');
+				for (i in boites){
+					var li = document.createElement('li');
+					li.innerHTML = '<input type="radio" name="choixBoite" value="'+boites[i][1]+'">'+boites[i][0]+'</input>';
+					listeBoites.appendChild(li);	
+				}
+			}
+			
+			function setPrixBoite(){
+			 var choixBoite = document.getElementsByName('choixBoite');
+			 for (i in choixBoite) {
+				 if (choixBoite[i].checked) {
+					 document.getElementById('prixBoite').value = choixBoite[i].value;
+					 break;
+				 }
+			 }
+				setPrixTotal();
+			}
+
+			function setListeOptions(){
+				var listeOptions = document.getElementById('listeOptions');
+				for (i in options){
+					var li = document.createElement('li');
+					li.innerHTML = '<input type="checkbox" name="choixOptions" value="'+options[i][1]+'">'+options[i][0]+'</input>';
+					listeOptions.appendChild(li);	
+				}
+			}
+
+			function setPrixOptions(){
+			 var prixOptions = 0;
+			 var choixOptions = document.getElementsByName('choixOptions');
+			 for (i in choixOptions) {
+				 if (choixOptions[i].checked) {
+					 prixOptions += parseInt(choixOptions[i].value);
+				 }
+			 }
+				document.getElementById('prixOptions').value = prixOptions;
+				setPrixTotal();
+			}
+
+			function setPrixReprise(){
+				var errorMsg = "Veuillez indiquer un montant compris entre 1000 et 4500";
+				var reprise = document.getElementById('prixReprise');
+				var prixReprise = parseInt(reprise.value);
+				if (!prixReprise || (prixReprise < 1000) || (4500 < prixReprise) ) {
+					reprise.value = 0;
+				alert(errorMsg);
+				}
+				setPrixTotal();
+			}
+
+			function setPrixTotal(){
+				var prixModele = parseInt(document.getElementById('prixModele').value);
+				var prixCouleur = parseInt(document.getElementById('prixCouleur').value);
+				var prixOptions = parseInt(document.getElementById('prixOptions').value);
+				var prixReprise = parseInt(document.getElementById('prixReprise').value);
+				document.getElementById('prixTotal').value = prixModele+prixCouleur+prixOptions-prixReprise;
+				toggleSubmit();
+			}
+
+			function checkNom(){
+				var nom = document.getElementById('nom');
+				if (!(/^[A-Z \.\-’]{2,20}$/i.test(nom.value))) {
+				alert("Le nom n'est pas valide");
+					nom.value = "";
+			  }
+				toggleSubmit();
+			}
+
+			function checkPrenom(){
+				var prenom = document.getElementById('prenom');
+				if (!(/^[A-Z \.\-’]{2,20}$/i.test(prenom.value))) {
+				alert("Le prénom n'est pas valide");
+					prenom.value = "";
+			  }
+				toggleSubmit();
+			}
+
+			function checkEmail(){
+				var email = document.getElementById('email');
+				if(!(/^[\w.-]+@[\w.-]+\.[A-Za-z]{2,6}$/.test(email.value)))
+				{
+					alert("L'email n'est pas valide");
+					email.value = "";
+				}
+				toggleSubmit();
+			}
+
+			function toggleSubmit(){
+				var nom = document.getElementById('nom').value;
+				var prenom = document.getElementById('prenom').value;
+				var email = document.getElementById('email').value;
+				var prixModele = parseInt(document.getElementById('prixModele').value);
+				var couleur = false;
+				var choixCouleur = document.getElementsByName('choixCouleur');
+				for (i in choixCouleur) {
+					if(choixCouleur[i].checked){
+						couleur = true;
+						break;
+					}	
+				}
+				var boite = false;
+				var choixBoite = document.getElementsByName('choixBoite');
+				for (i in choixBoite) {
+					if(choixBoite[i].checked){
+						boite = true;
+						break;
+					}	
+				}
+				if (nom && prenom && email && prixModele && couleur && boite) {
+						document.getElementById('submit').disabled = false;
+				}
+			}
+
+			function submitForm(){
+			}
+
+			window.onload = function init(){
+				document.getElementById('nom').onchange = checkNom;
+				document.getElementById('prenom').onchange = checkPrenom;
+				document.getElementById('email').onchange = checkEmail;
+				setMenuMarques();
+				setMenuModeles();
+				document.getElementById('menuMarques').onchange = setMenuModeles;
+				document.getElementById('menuModeles').onchange = setPrixModele;
+				document.getElementById('menuModeles').disabled = true;
+				setListeCouleurs();
+				var choixCouleur = document.getElementsByName('choixCouleur');
+				for (i in choixCouleur) {
+						 choixCouleur[i].onchange = setPrixCouleur;
+				}
+				setListeBoites();
+				var choixBoite = document.getElementsByName('choixBoite');
+				for (i in choixBoite) {
+						 choixBoite[i].onchange = setPrixBoite;
+				}
+				setListeOptions();
+				var choixOptions = document.getElementsByName('choixOptions');
+				for (i in choixOptions) {
+						 choixOptions[i].onchange = setPrixOptions;
+				}
+				document.getElementById('prixReprise').onchange = setPrixReprise;
+				document.getElementById('submit').disabled = true;
+				document.getElementById('formulaire').onsubmit = submitForm;
+			}
+			
+		</script>
+
+	</head>
+
+	<body>
+	
+		<center><h3>Formulaire d'achat de voiture</h3></center>
+		
+			<form id="formulaire">
+			
+				<div id="infos">
+					Nom :<input id="nom" type="text" size="10"></br>
+					Prenom : <input id="prenom" type="text" size="10"></br>
+					Email : <input id="email" type="text" size="10">
+				</div>
+				
+				<div id="modele">
+					Marque : <select id="menuMarques"></select>
+					Modele : <select id="menuModeles"></select>
+					+ <input id="prixModele" type="text" name="prix" size="8" value="0" disabled>&euro;
+				</div>
+				
+				<div>
+					<ul id="listeCouleurs">Couleurs</ul>
+					+ <input id="prixCouleur" type="text" name="prix" size="8" value="0" disabled>&euro;
+				</div>
+				
+				<div>
+					<ul id="listeBoites">Boites</ul>
+					+ <input id="prixBoite" type="text" name="prix" size="8" value="0" disabled>&euro;
+				</div>
+
+				<div>
+					<ul id="listeOptions">Options</ul>
+					+ <input id="prixOptions" type="text" size="8" value="0" disabled>&euro;
+				</div>
+					
+				<div id="reprise">Reprise de l'ancien v&eacute;hicule
+					- <input id="prixReprise" type="text" size="8" name="prix" value="0">&euro;
+				</div>
+				
+				<div id="total">Prix total
+					<input id="prixTotal" type="text" size="8" name="prix" value="0" disabled>&euro;
+				</div>
+				
+				<div id="buttons"><input type="reset" id="reset" value="Réinitialiser"> <input type="submit" id="submit" value="Envoyer"></div>
+			
+			</form>
+
+	</body>
+	
+</html>
