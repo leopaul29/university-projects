@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+	
+		<script type="text/javascript">
+			function Personne (nom, age, sexe) {
+					this.nom = nom ;
+					this.age = age ;
+					this.sexe = sexe ;
+				}
+			
+			function afficher(){
+					document.write("nom : " + this.nom + "</br>");
+					document.write("age : " + this.age + "</br>");
+					document.write("sexe : " + this.sexe + "</br>");
+				}
+		</script>
+		
+	</head>
+	
+	<body>
+		
+		<h1 align="center">TP4</h1>
+
+		<h3>Créer l’instance d’une personne de nom fred, d’âge 16 ans et de sexe masculin</h3>
+		
+		<script type="text/javascript">
+		
+			//Affichage de Fred après avoir créé l'objet 'personne' :
+			Personne.nom = "fred";
+			Personne.age = "16";
+			Personne.sexe = "Masculin";
+			
+			document.write("nom : " + Personne.nom + "</br>");
+			document.write("age : " + Personne.age + "</br>");
+			document.write("sexe : " + Personne.sexe + "</br>");
+			
+			//Crée une instance d’un objet et lui ajoute trois propriétés :
+			Personne = new Object();
+			Personne.nom = "fred";
+			Personne.age = 16;
+			Personne.sexe = "Masculin";
+			
+			//fred = new Personne("fred",16,"Masculin");
+			Object.afficher();
+			document.write(afficher());
+		</script>
+	
+	</body>
+	
+</html>
