@@ -1,0 +1,54 @@
+<html>
+<head>
+	<script type="text/javascript" language="javascript">
+		<!--
+		// Voici la partie ˆ faire :
+		function displayPersonne() {
+			document.write("Je m'appelle : " + this.prenom + "&nbsp;" + this.nom + "<br/>");
+
+			p = this.epoux;
+			if ( p ) 
+			  if ( p.prenom.length > 0 && p.nom.length > 0 )
+			    document.write("Le nom mon epoux(se) est : " + p.prenom + "&nbsp;" + p.nom + "<br/>");
+
+			t_enf = this.enfant;
+			if ( t_enf ) {
+		      document.write("J'ai " + t_enf.length + " enfant(s) <br/>");
+			  for(i=0; i < t_enf.length; i++) {
+				p = t_enf[i];
+				document.write("Le nom de me(s) enfant(s) : " + p.prenom + "&nbsp;" + p.nom + "<br/>");
+			  }
+			}
+		}
+	
+		function Personne(prenom,nom,age,epoux,enfant) {
+			this.prenom = prenom;
+			this.nom = nom;
+			this.age = age;
+			this.epoux = epoux;
+			this.enfant = enfant;
+			this.display=displayPersonne;
+		}
+		
+		//-->
+		</script>
+</head>
+<body>
+	<script type="text/javascript" language="javascript">
+		<!--
+		// Generation des objets
+		fille = new Personne("Julie", "Nahon", 10, "", "");
+		garcon = new Personne("Eric", "Nahon", 16, "", "");
+		enfant = new Array(fille, garcon);
+
+
+		laMere = new Personne("Sylvie", "Nahon", 43, "", enfant);
+		lePere = new Personne("Paul", "Nahon", 45, laMere, enfant);
+		laMere.epoux = lePere;
+
+		// Affichage du pere
+		lePere.display();
+		//-->
+	</script>
+</body>
+</html>
