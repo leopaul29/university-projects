@@ -1,0 +1,46 @@
+<style type="text/css">
+			body {
+			background-color:#FFFFF0;
+			font-family:Helvetica,sans-serif;
+			font-size:75%;
+			color:#000080;
+			margin:10px 10px;
+			}
+			ol {
+			list-style:circle;
+			}
+			h1 {
+			font-size:200%;
+			}
+			h2 {
+			font-size:140%;
+			}
+			h3 {
+			font-size:110%;
+			}
+			th {
+			background-color:#ADD8E6; 
+			}
+			ul {
+			list-style-type:upper-roman;
+			}
+			a {
+			text-decoration:none;
+			}
+			a:link {
+			color:dark-blue;
+			}
+			a:visited {
+			color:red;
+			}
+			a:hover {
+			color:#FF9900;
+			}
+			a:active {
+			color:green;
+			}
+			#cours {
+			font-weight:bold;
+			text-decoration:underline;
+			}
+		</style>
