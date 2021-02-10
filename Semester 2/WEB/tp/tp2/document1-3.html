@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+
+		<script language="JavaScript" src="js/mylib.js"></script>
+
+	</head>
+	
+	<body>
+		
+		<script language="JavaScript">
+			
+			document.write(window.outerHeight);
+			document.write("</br>");
+			document.write(window.outerWidth);
+			document.write("</br></br>");
+
+			document.write(navigator.appCodeName);
+			document.write("</br>");
+			document.write(navigator.appName);
+			document.write("</br>");
+			document.write(navigator.language);
+			document.write("</br>");
+			document.write(navigator.userAgent);
+			document.write("</br></br>");
+
+			document.write(location.href);
+			document.write("</br>");
+			document.write(location.hostname);
+			document.write("</br></br>");
+		
+		</script>		
+		
+		<input type="button" value="précédent" id="precedent">
+		<input type="button" value="suivant" id="suivant">
+		
+		<script language="JavaScript">
+		
+			function goForward(){
+				history.forward();
+			}
+
+			window.onload = function(){
+				
+				var precedent = document.getElementById('precedent');
+				var suivant = document.getElementById('suivant');
+				
+				precedent.onclick = function(){
+					history.back();
+				}
+				
+				suivant.onclick = goForward;
+			}
+	
+		</script>
+	
+	</body>
+	
+</html>
