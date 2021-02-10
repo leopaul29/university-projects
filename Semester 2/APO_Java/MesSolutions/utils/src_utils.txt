@@ -1,0 +1,6 @@
+"C:\\Users\\LeoPaul\\Desktop 2\\APO_Java1\\MesSolutions\\utils\\Analyseur.java"
+"C:\\Users\\LeoPaul\\Desktop 2\\APO_Java1\\MesSolutions\\utils\\Data.java"
+"C:\\Users\\LeoPaul\\Desktop 2\\APO_Java1\\MesSolutions\\utils\\T_Analyseur_N1.java"
+"C:\\Users\\LeoPaul\\Desktop 2\\APO_Java1\\MesSolutions\\utils\\T_Analyseur_N3.java"
+"C:\\Users\\LeoPaul\\Desktop 2\\APO_Java1\\MesSolutions\\utils\\TestData.java"
+"C:\\Users\\LeoPaul\\Desktop 2\\APO_Java1\\MesSolutions\\utils\\Texte.java"

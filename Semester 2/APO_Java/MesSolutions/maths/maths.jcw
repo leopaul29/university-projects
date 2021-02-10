@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workspace>
+	<settings>
+		<label>maths</label>
+	</settings>
+	<users>
+		<user>
+			<path>maths.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>maths.jcp</path>
+		</project>
+	</projects>
+</workspace>

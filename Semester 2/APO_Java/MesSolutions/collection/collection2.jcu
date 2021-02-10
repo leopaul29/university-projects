@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workspace_user>
+	<active_project>
+		<label>collection</label>
+	</active_project>
+	<projects>
+		<project>
+			<label>collection</label>
+			<showfiles>false</showfiles>
+			<folderitem>
+				<path>class</path>
+			</folderitem>
+			<folderitem>
+				<path>class\collections</path>
+			</folderitem>
+			<folderitem>
+				<path>Traducteur</path>
+			</folderitem>
+			<folderitem>
+				<path>Traducteur\TUN</path>
+			</folderitem>
+		</project>
+	</projects>
+	<open_files>
+		<docitem>
+			<path>Traducteur\Traducteur.java</path>
+			<source>true</source>
+			<index>0</index>
+			<active>true</active>
+		</docitem>
+		<docitem>
+			<path>Traducteur\TUN\T_Traducteur_N1.java</path>
+			<source>true</source>
+			<index>1</index>
+			<active>false</active>
+		</docitem>
+	</open_files>
+</workspace_user>
