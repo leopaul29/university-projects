@@ -1,0 +1,33 @@
+# Exercice 2.4 TP2
+cd ~/ASR3/TP2/
+cp /SupportCours/S1T/ASR3/2012_09_10_TP2/Unix-and-Internet-Fundamentals-HOWTO.txt .
+
+# •	Quelle commande faut-il taper pour afficher tout le contenu de ce fichier en une seule fois ?
+cat Unix-and-Internet-Fundamentals-HOWTO.txt
+
+# •	Quelle commande faut-il taper pour afficher le contenu de ce fichier page par page ?
+more Unix-and-Internet-Fundamentals-HOWTO.txt
+
+# •	Quelle commande faut-il taper pour afficher les 20 premières lignes de ce fichier ?
+head -20 Unix-and-Internet-Fundamentals-HOWTO.txt
+
+# •	Quelle commande faut-il taper pour afficher les 20 dernières  lignes de ce fichier ?
+tail -20 Unix-and-Internet-Fundamentals-HOWTO.txt
+
+# •	Quelle commande faut-il taper pour afficher le nombre de lignes contenues dans ce fichier ?
+wc -l Unix-and-Internet-Fundamentals-HOWTO.txt
+# voir aussi cette option de cat qui numérote les lignes affichées sur la sortie standard
+cat -n Unix-and-Internet-Fundamentals-HOWTO.txt
+
+# •	Quelle commande faut-il taper pour afficher le nombre de mots contenus dans ce fichier ?
+wc -w Unix-and-Internet-Fundamentals-HOWTO.txt
+
+# •	Quelle commande faut-il taper pour afficher le nombre de caractères contenus dans ce fichier ?
+wc -m Unix-and-Internet-Fundamentals-HOWTO.txt
+
+# •	Quelle commande faut-il taper pour afficher toutes les lignes qui contiennent le mot « Unix » ?
+grep Unix Unix-and-Internet-Fundamentals-HOWTO.txt
+
+# •	Quelle commande faut-il taper pour découper ce fichier en morceaux de 100 lignes au plus ?
+split -l 100 Unix-and-Internet-Fundamentals-HOWTO.txt
+# Question bonus : comment réassembler ces morceaux?

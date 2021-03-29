@@ -1,0 +1,2 @@
+Ceci est le fichier d'aide pour testeargs.sh.
+Vous pouvez en ajouter dans help.txt.

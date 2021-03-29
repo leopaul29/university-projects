@@ -1,0 +1,56 @@
+On traite le dictionnaire dicoUTF8.txt qui contient 336531
+Expressions permettant de filtrer les lignes qui :
+1. ne contiennent qu'un seul caractere (quelconque)
+3
+2. ne contiennent aucun caractere (sont donc vides !)
+0
+3. contiennent au moins deux caracteres (quelconques)
+336528
+4. contiennent au plus deux caracteres
+94
+5. contiennent au moins deux caracteres et cinq caracteres au plus
+9436
+6. contiennent la lettre x (au moins une fois)
+8553
+7. ne contiennent pas la lettre x
+327978
+8. ne contiennent la lettre x qu'une seule fois
+8522
+9. commencent par la lettre x
+63
+10. se terminent par la lettre x
+1600
+11. contiennent la lettre e, 2 fois au moins (sequence non imposee !)
+91514
+12. contiennent la lettre e deux fois seulement
+76169
+13. contiennent les lettres x ou y (au moins une fois)
+19299
+14. ne contiennent ni x, ni y
+317232
+15. ne contiennent x ou y qu'une seule fois
+18494
+16. commencent par x ou par y
+155
+17. se terminent par x ou par y
+317232
+18. contiennent x ou y, 2 fois au moins (sequence non imposee !)
+805
+19. ne contiennent x ou y que deux fois seulement
+789
+20. commencent et se termine par la meme lettre
+17269
+21. contiennent un chiffre
+0
+22. ne contiennent aucun chiffre
+336531
+23. ne contiennent qu'un seul chiffre
+0
+24. commencent par un chiffre
+0
+25. se terminent par un chiffre
+0
+26. ne contiennent que des chiffres
+0
+27. commencent et se terminent par un chiffre
+0

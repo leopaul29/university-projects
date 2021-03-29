@@ -1,0 +1,29 @@
+	NOM
+	
+		idem.sh - Chercher des fichiers identiques dans des arborescences
+	
+	SYNOPSIS
+
+		idem.sh [OPTION...] [chemin...] [expression]
+	
+	
+	DESCRIPTION
+
+		idem.sh ecrit sur stdout tous les noms complets (repertoires et nom de base du fichier) des fichiers correspondant a expression dans les arborescences de repertoires de chaque chemin mentionne.
+	
+	
+	OPTIONS
+
+		-h, --help : afficher l aide en ligne et quitter
+		-v, --verbose : expliquer ce qui est fait
+	
+	
+	EXPRESSIONS
+
+		-iname motif : Semblable a -name, mais sans differencier les majuscules et les minuscules.
+		-name motif : Le nom de base du fichier cherche (sans les repertoires du chemin d'acces) correspond a motif.
+		-size n : Le fichier cherche est de taille n octets
+		-includes fichier : Le fichier cherche est de type texte et contient tous les mots ecrits dans fichier (un mot par ligne)
+
+	
+	

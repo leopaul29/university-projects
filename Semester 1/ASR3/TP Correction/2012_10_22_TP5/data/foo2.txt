@@ -1,0 +1,1 @@
+Fichier foo2.txt sur une ligne
