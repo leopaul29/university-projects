@@ -1,0 +1,11 @@
+Exercice 1 : a rendre pour la fin de la séance 5.
+
+A partir des programmes execdemo.c et forkwait.c, écrire le programme
+mini_bash.c qui dans une boucle infinie lit des commandes sur stdin et
+les exécute dans un processus fils.
+
+La commande accepte un nombre variable d'arguments
+Le processus père attend la fin du fils avant de lire la commande suivante.
+
+
+

@@ -1,0 +1,6 @@
+1) Modifier le programme exemple_nice.c pour utiliser en plus le
+signal SIGUSR2 qui aura pour effet de faire afficher par tous les
+processus la valeur courante du compteur. Le signal sera testé depuis
+le shell. On augmentera la durée de calcul pour avoir le temps de
+faire ce test.
+

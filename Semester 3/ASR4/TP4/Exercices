@@ -1,0 +1,24 @@
+Dans ce TP vous devez :
+
+1) compiler, exécuter et surtout comprendre les exemples du chapitre 5
+
+2) écrire le programme ring.c qui accepte en argument trois valeurs
+entières positives, J et T : N est le nombre de processus à créer, J
+est la valeur initiale strictement positive d'un jeton et T est un
+nombre de tours.
+
+Les processus communiquent entre eux par des tubes {0 -> 1, .. N-1 ->
+0} et forment un anneau. Le jeton est transmis depuis le processus 0 à
+travers les tubes dans le sens des aiguilles d'une montre. Chaque
+noeud de l' anneau recoit le jeton, lui ajoute 1, et le fait passer à
+son voisin.
+
+Une fois que le processus 0 recoit le jeton après T tour(s), il
+affiche sa valeur courante et envoit -1 pour dire aux autres processus
+de terminer.
+
+Les processus sont créés par des fork() et communique avec des tubes
+anonymes.
+
+3) Même programme avec des tubes nommés entre processus lancés par un
+script.
